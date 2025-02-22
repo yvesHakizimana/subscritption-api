@@ -35,3 +35,5 @@ subscriptionsRouter.get('/:id/cancel', (req, res) => {
 subscriptionsRouter.get('/upcoming-renewals', (req, res) => {
     res.send({title: "Upcoming renewals"})
 })
+
+export default subscriptionsRouter
