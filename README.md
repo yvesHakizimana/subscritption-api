@@ -43,8 +43,8 @@ project-root/
 ### Steps
 1. Clone the repository:
    ```sh
-   git clone <repository-url>
-   cd <project-directory>
+   git clone https://github.com/yvesHakizimana/subscritption-api
+   cd subscription-api
    ```
 
 2. Install dependencies:
