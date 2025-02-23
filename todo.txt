@@ -1,2 +1,43 @@
 npx express-generator --no-view --git
 npx eslint --lint
+Configuring the environment variables. both the development and also some production variables.
+Making the routes
+Setted up the database using mongodb and mongoose with mongodb atlas.
+Setting up the models of our application to mean the user model and the subscription models.
+Adding the centralized error handling middleware.
+Added Authentication and also the learnt about making atomic operations in mongodb with mongoose.
+(By using mongoose.startSession and also startTRansaction  I made the signup atomic to mean if one operation)
+fails within the whole operation will be canceled.
+(Also noted like the position of the errorMiddleware can be cumbersome if you don't know how to position them well
+to mean like it must be positioned after all routes and all middlewares to take the effect.)
+I had been amazed with this package which protects your app like your backend Service  and like
+due the all rate-limiting and other stffs crds to arcjet.
+
+
+Workflow is like taskScheduling or queing system.
+Workflow behaviour
+1. Triggering the workflow:: The workflow/scheduling begins whenever a user creates or submits a new subscription
+then we pass the created subscriptionId into our workflow.
+
+2. Retrieving Subscription Details.
+(then process extracts the Subscription Id from the context)
+and the it searched the corresponding details from the database.
+
+3. Validation Checks.
+if the subscription doesn't exist, an error is logged and the process terminates
+if the subscription exists and status is checked
+--- If inactive, the status is logged and the process is exited
+--- if Active, the renewal date is verified.
+
+4. Renewal Date Evaluation.
+-- if the renewal date has passed, the process will exit
+-- if the renewal date is in the future, the reminder loop begins()
+What is the remainder loop here ()?? may be 5, 2 and 1 day before the renewal date.
+
+
+5. Reminder Scheduling
+for each predefined reminder:
+-- The reminder date is calculated.
+-- Once the reminder date arrives (or if it has already passed), the reminder email is sent.
+
+6. Completion

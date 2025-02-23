@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-// As you see it's possible that we can have the property level validation to mean we can validate the like what type we can enter in our database and if not it will raise some errors.
+// As you see, it's possible that we can have the property level validation to mean we can validate the like what type we can enter in our database and if not it will raise some errors.
 const subscriptionSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -52,6 +52,12 @@ const subscriptionSchema = new mongoose.Schema({
             validator: function (value) { return value > this.startDate },
             message: "RenewalDate must be after the start Date."
         }
+    },
+    user: {
+        ref: "User",
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        index: true,
     }
 
 
